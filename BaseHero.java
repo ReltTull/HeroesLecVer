@@ -8,6 +8,21 @@ public class BaseHero {
     protected int hp;
     protected int maxHp;
 
+    //    проверить, что будет при ещё одном использовании field
+    private int field;
+
+    public int getField() {
+        return field;
+    }
+
+    public void setField(int field) {
+        this.field = field;
+    }
+
+    public void spendMana(int spendValue) {
+        this.field -= spendValue;
+    }
+
     static {
         BaseHero.number = 0;
         BaseHero.r = new Random();
@@ -29,11 +44,6 @@ public class BaseHero {
                 this.name, this.hp, this.getClass().getSimpleName());
     }
 
-    public void healed(int Hp) {
-
-        this.hp = Hp + this.hp > this.maxHp ? this.maxHp : Hp + this.hp;
-    }
-
     public void GetDamage(int damage) {
         if (this.hp - damage > 0) {
             this.hp -= damage;
@@ -47,15 +57,18 @@ public class BaseHero {
         System.out.println(target.name + " get damage by " + user.name);
     }
 
-    /**
-     * метод лечения. Кроме самого лечения я хочу здесь уменьшать запас маны хиллера
-     *
-     * @param user   сюда предполагал вложить хиллера, чтобы через user.mana уменьшать запас маны. Но класс BaseHero не
-     *               знает про ману. Как вариант - переместить параметр мана из потомственных классов в BaseHero.
-     * @param target
-     */
+
+    public void healed(int Hp) {
+        if (field < 5) {
+            System.out.println("Not enough mana");
+        } else {
+            this.hp = Hp + this.hp > this.maxHp ? this.maxHp : Hp + this.hp;
+            spendMana(5);
+        }
+    }
+
     public void Healing(BaseHero user, BaseHero target) {
-        int heal = BaseHero.r.nextInt(5, 12);
+        int heal = BaseHero.r.nextInt(5, 7);
         target.healed(heal);
         System.out.println(target.name + " get heal by " + user.name);
     }

@@ -64,23 +64,23 @@ public class Program {
         int healerCount = 0;
 
 
-        List<BaseHero> teams = new ArrayList<>();
-        for (int i = 0; i < teamCount; i++) {
-            if (rand.nextInt(2) == 0) {
-                teams.add(new Priest());
-                priestCount++;
-            } else if (rand.nextInt(2) == 1) {
-                teams.add(new Magicial());
-                magicianCount++;
-            } else {
-                teams.add(new Healer());
-                healerCount++;
-            }
-
-            System.out.println(teams.get(i).getInfo());
-        }
-        System.out.println();
-        System.out.printf("magicalCount: %d priestCount: %d healerCount: %d \n\n\n", magicianCount, priestCount, healerCount);
+//        List<BaseHero> teams = new ArrayList<>();
+//        for (int i = 0; i < teamCount; i++) {
+//            if (rand.nextInt(2) == 0) {
+//                teams.add(new Priest());
+//                priestCount++;
+//            } else if (rand.nextInt(2) == 1) {
+//                teams.add(new Magicial());
+//                magicianCount++;
+//            } else {
+//                teams.add(new Healer());
+//                healerCount++;
+//            }
+//
+//            System.out.println(teams.get(i).getInfo());
+//        }
+//        System.out.println();
+//        System.out.printf("magicalCount: %d priestCount: %d healerCount: %d \n\n\n", magicianCount, priestCount, healerCount);
 
         // attack
 
